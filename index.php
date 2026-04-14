@@ -52,19 +52,24 @@
 <body>
     <h1>Bencwel Janoszczyk</h1>
     <table>
-        <tr>
-            <td><img src="benek1.png" alt=""></td>
-            <td><img src="benek2.png" alt=""></td>
-            <td><img src="benek3.png" alt=""></td>
-            <td><img src="benek4.png" alt=""></td>
-        </tr>
-        <tr>
-            
-            <td><img src="benek5.png" alt=""></td>
-            <td><img src="benek6.png" alt=""></td>
-            <td><img src="benek7.png" alt=""></td>
-            <td><img src="benek8.png" alt=""></td>
-        </tr>
+            <?php
+                $folder='img/';
+                $pliki=scandir($folder);
+
+                $licz=0;
+
+
+                foreach ($pliki as $plik){
+                    $licz++;
+                }
+                $licz=$licz-2;
+                for($i=1;$i<=$licz;$i++){
+                    echo "<td><img src='img/benek$i.png'></td>";
+                    if($i%4==0){
+                        echo "<tr>";
+                    }
+                }
+            ?>
     </table>
     <br>
     <video id="gitara" controls playsinline webkit-playsinline>
