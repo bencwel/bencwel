@@ -51,26 +51,29 @@
 </style>
 <body>
     <h1>Bencwel Janoszczyk</h1>
-    <table>
-            <?php
-                $folder='img/';
-                $pliki=scandir($folder);
+    <table id="galeria"></table>
+    <script>
 
-                $licz=0;
+    const ileZdjec = 8; // Ile obrazów w folderze img
 
+    const tabela = document.getElementById("galeria");
+    let tr;
 
-                foreach ($pliki as $plik){
-                    $licz++;
-                }
-                $licz=$licz-2;
-                for($i=1;$i<=$licz;$i++){
-                    echo "<td><img src='img/benek$i.png'></td>";
-                    if($i%4==0){
-                        echo "<tr>";
-                    }
-                }
-            ?>
-    </table>
+    for(let i = 1; i <= ileZdjec; i++){
+        if((i-1) % 4 === 0){
+            tr = document.createElement("tr");
+            tabela.appendChild(tr);
+        }
+
+        const td = document.createElement("td");
+        const img = document.createElement("img");
+
+        img.src = "img/benek" + i + ".png";
+
+        td.appendChild(img);
+        tr.appendChild(td);
+    }
+</script>
     <br>
     <video id="gitara" controls playsinline webkit-playsinline>
           <source src="film.mp4" type="video/mp4">
